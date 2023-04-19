@@ -3,10 +3,10 @@
         <div class="container px-5 py-24  mx-auto">
             <div class="flex flex-col text-center w-full mb-20">
                 <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Pacientes</h1>
-                <form class="flex mx-auto border-2 border-gray-200 rounded overflow-hidden mt-6">
-                    <input class="py-2 px-4 w-full focus:outline-none" type="text" placeholder="Buscar paciente">
-                    <button class="bg-gray-200 text-gray-600 py-2 px-4 focus:outline-none">Buscar</button>
-                </form>
+                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Seu histórico médico em boas mãos: acesse suas informações de saúde com segurança no Hospital Health</p>
+                <div class="flex mx-auto border-2 border-gray-200 rounded overflow-hidden mt-6">
+                    <input v-model="filtro" class="py-2 px-4 w-full focus:outline-none" placeholder="Buscar paciente">
+                </div>
             </div>
             <div class="lg:w-2/3 w-full mx-auto overflow-auto">
                 <table class="table-auto w-full text-left whitespace-no-wrap">
@@ -21,7 +21,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="paciente in pacientes" :key="paciente.codigo">
+                        <tr v-for="paciente in searchPatients" :key="paciente.codigo">
                             <td class="px-4 py-3">{{ paciente.codigo }}</td>
                             <td class="px-4 py-3">{{ paciente.nome }}</td>
                             <td class="px-4 py-3">{{ paciente.cpf }}</td>
@@ -55,7 +55,8 @@
     export default {
         data() {
             return {
-                pacientes: [] as Paciente []
+                pacientes: [] as Paciente [],
+                filtro: ''
             }
         },
         mounted(){
@@ -76,5 +77,16 @@
                 }
             )
         },
+        computed: {
+            searchPatients() {
+                if(this.filtro == ''){
+                    return this.pacientes
+                } else {
+                    return this.pacientes.filter(paciente => {
+                        return paciente.nome.toLowerCase().includes(this.filtro.toLowerCase())
+                    })
+                }
+            }
+        }
     }
 </script>

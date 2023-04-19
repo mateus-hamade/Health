@@ -3,7 +3,12 @@
         <div class="container px-5 py-24 mx-auto">
             <div class="flex flex-col text-center w-full mb-20">
                 <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">funcionarios</h1>
+                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Seu histórico médico em boas mãos: acesse suas informações de saúde com segurança no Hospital Health</p>
+                <div class="flex mx-auto border-2 border-gray-200 rounded overflow-hidden mt-6">
+                    <input v-model="filtro" class="py-2 px-4 w-full focus:outline-none" placeholder="Buscar funcionario">
+                </div>
             </div>
+            
             <div class="lg:w-2/3 w-full mx-auto overflow-auto">
                 <table class="table-auto w-full text-left whitespace-no-wrap">
                     <thead>
@@ -18,7 +23,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="funcionario in funcionarios" :key="funcionario.codigo">
+                        <tr v-for="funcionario in searchFuncionarios" :key="funcionario.codigo">
                             <td class="px-4 py-3">{{ funcionario.codigo }}</td>
                             <td class="px-4 py-3">{{ funcionario.nome }}</td>
                             <td class="px-4 py-3">{{ funcionario.cpf }}</td>
@@ -56,7 +61,8 @@
 
         data() {
             return {
-                funcionarios: [] as Funcionario []
+                funcionarios: [] as Funcionario [],
+                filtro: ''
             }
         },
 
@@ -81,6 +87,17 @@
                     this.funcionarios = err
                 }
             )
+        },
+        computed: {
+            searchFuncionarios() {
+                if(this.filtro == ''){
+                    return this.funcionarios
+                } else {
+                    return this.funcionarios.filter(paciente => {
+                        return paciente.nome.toLowerCase().includes(this.filtro.toLowerCase())
+                    })
+                }
+            }
         }
     }
 </script>

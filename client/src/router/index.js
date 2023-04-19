@@ -10,7 +10,7 @@ import Setores from '../views/Setores.vue'
 
 import FuncionarioDetalhe from '../views/detalhes/FuncionarioDetalhe.vue'
 import PacienteDetalhe from '../views/detalhes/PacienteDetalhe.vue'
-// import SetorDetalhe from '../views/detalhe/SetorDetalhe.vue'
+import SetorDetalhe from '../views/detalhes/SetorDetalhe.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -53,6 +53,11 @@ const router = createRouter({
       path: '/paciente/:codigo',
       name: 'PacienteDetalhe',
       component: PacienteDetalhe
+    },
+    {
+      path: '/setor/:codigo',
+      name: 'SetorDetalhe',
+      component: SetorDetalhe
     }
   ]
 })

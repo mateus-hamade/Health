@@ -37,4 +37,31 @@ router.get('/:codigo', (req, res) => {
     })
 })
 
+router.post('/add', (req, res) => {
+    const { nome, cpf, rg, data, plano, rua, bairro, numero, cep, estado, cidade, pais } = req.body
+
+    pool.query(`
+        INSERT INTO pessoa (nome, cpf, rg, data_nascimento, rua, bairro, numero, cep, estado, cidade, pais)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+        RETURNING codigo;
+    `, [nome, cpf, rg, data, rua, bairro, numero, cep, estado, cidade, pais], (err, result) => {
+        if (err) {
+            console.error(err)
+            return
+        }
+        const codigo = result.rows[0].codigo
+        pool.query(`
+            INSERT INTO paciente (codigo_pessoa, plano_saude)
+            VALUES ($1, $2);
+        `, [codigo, plano], (err, result) => {
+            if (err) {
+                console.error(err)
+                return
+            }
+            res.send(result.rows)
+            console.log(result.rows)
+        })
+    })
+})
+
 module.exports = router

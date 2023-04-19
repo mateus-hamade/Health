@@ -61,7 +61,9 @@
 
 <script lang="ts">
     import axios from 'axios'
+
     import { cpf } from 'cpf-cnpj-validator'
+    import moment from 'moment'
 
     interface Paciente {
         codigo: number;
@@ -91,6 +93,11 @@
 
                     this.paciente.cpf = cpf.format(this.paciente.cpf)
                     this.paciente.cep = this.paciente.cep.replace(/(\d{5})(\d{3})/, "$1-$2")
+
+                    if (this.paciente.data_consulta){
+                        this.paciente.data_consulta = moment.utc(this.paciente.data_consulta).format('DD/MM/YYYY')
+                        this.paciente.data_retorno = moment.utc(this.paciente.data_retorno).format('DD/MM/YYYY')
+                    }
                 })
                 .catch(err => {
                     this.paciente = err

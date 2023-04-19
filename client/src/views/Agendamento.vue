@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         <div class="p-2 w-full">
-                            <button class="flex mx-auto btn btn-secondary" v-on:click="onSubmit()">Cadastrar</button>
+                            <button class="flex mx-auto btn btn-secondary" v-on:click="submitForm()">Cadastrar</button>
                         </div>
                     </form>
                 </div>
@@ -95,16 +95,15 @@
             }
         },
         methods: {
-            onSubmit() {
+            submitForm() {
                 axios.post('http://localhost:3000/pacientes/add', this.post)
                     .then(response => {
-                        console.log(response)
+                        console.log(this.post)
                     })
                     .catch(error => {
                         console.log(error)
-                    })
+                    })                
             }
         }
     }
-
 </script>
