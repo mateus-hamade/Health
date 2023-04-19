@@ -33,3 +33,19 @@ npm run build
 ```sh
 npm run lint
 ```
+
+# server
+
+This template should help get you started developing with Node
+
+## Project Setup
+
+```sh
+npm install
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+nodemon app
+```
