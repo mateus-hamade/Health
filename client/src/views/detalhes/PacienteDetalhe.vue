@@ -16,6 +16,8 @@
                             
                             <p>CEP: {{ paciente.cep }}</p>
                             <p>CPF: {{ paciente.cpf }}</p>
+                            <p>RG: {{ paciente.rg }}</p>
+                            <p>Telefone: {{ paciente.telefone }}</p>
                         </div>
                     </div>
                     <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
@@ -69,6 +71,7 @@
         codigo: number;
         nome: string;
         cpf: string;
+        rg: string;
         cep: string;
         telefone: string;
         plano_saude: string;
@@ -93,6 +96,8 @@
 
                     this.paciente.cpf = cpf.format(this.paciente.cpf)
                     this.paciente.cep = this.paciente.cep.replace(/(\d{5})(\d{3})/, "$1-$2")
+                    this.paciente.rg = this.paciente.rg.replace(/(\d{2})(\d{2})(\d{3})(\d{1})/, "$1.$2.$3-$4")
+                    this.paciente.telefone = this.paciente.telefone.replace(/(\d{5})(\d{4})/, "$1-$2")
 
                     if (this.paciente.data_consulta){
                         this.paciente.data_consulta = moment.utc(this.paciente.data_consulta).format('DD/MM/YYYY')
