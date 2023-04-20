@@ -14,6 +14,7 @@ app.use(
 app.use('/paciente', (require('./router/paciente')))
 app.use('/funcionario', (require('./router/funcionario')))
 app.use('/setor', (require('./router/setor')))
+app.use('/agendamento', (require('./router/agendamento')))
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
