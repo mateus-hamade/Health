@@ -27,3 +27,13 @@
 >> cd server
 >> npm run dev
 ```
+# Capturas de tela 📸
+![image](/client/public/readme/health.png)
+![image](/client/public/readme/health(1).png)
+![image](/client/public/readme/health(2).png)
+![image](/client/public/readme/health(4).png)
+![image](/client/public/readme/health(5).png)
+![image](/client/public/readme/health(6).png)
+![image](/client/public/readme/health(7).png)
+![image](/client/public/readme/health(8).png)
+![image](/client/public/readme/health(3).png)
