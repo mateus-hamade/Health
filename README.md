@@ -1,51 +1,29 @@
-# client
+# Health Hospital 🐒
 
-This template should help get you started developing with Vue 3 in Vite.
+### Projeto ⚒️
+- Este projeto visa desenvolver uma aplicação web completa para um hospital, com o propósito de aprender a utilizar as tecnologias VueJs e NodeJs. 
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+### Executando o código
+- Instalando as dependencias 📚
+##### - Cliente
+```
+>> cd client
+>> npm install
+```
+##### - Servidor
+```
+>> cd server
+>> npm install
 ```
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
+- Executando o código 🚀
+##### - Cliente
 ```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
+>> cd client
+>> nodemon app
 ```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
+##### - Servidor
 ```
-
-# server
-
-This template should help get you started developing with Node
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-nodemon app
+>> cd server
+>> npm run dev
 ```
